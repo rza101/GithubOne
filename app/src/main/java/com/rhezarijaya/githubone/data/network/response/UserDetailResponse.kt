@@ -6,6 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 // user detail memiliki cukup banyak property yang sama pada beberapa endpoint
 // sehingga tidak perlu dibuat duplikat untuk semua endpoint
+// TODO some unused vars
 @Parcelize
 data class UserDetailResponse(
     @field:SerializedName("gists_url")

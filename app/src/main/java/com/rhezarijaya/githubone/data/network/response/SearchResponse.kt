@@ -4,6 +4,7 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
+// TODO not need to parcelize
 @Parcelize
 data class SearchResponse(
     @field:SerializedName("total_count")

@@ -14,6 +14,7 @@ import com.rhezarijaya.githubone.databinding.ActivityDetailBinding
 import com.rhezarijaya.githubone.ui.adapter.UserFollowPagerAdapter
 
 class DetailActivity : AppCompatActivity() {
+    // TODO companion object at bottom
     companion object {
         const val USER_DETAIL_KEY = "USER_DETAIL_KEY"
     }
