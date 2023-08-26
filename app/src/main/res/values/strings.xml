@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">GithubOne</string>
+    <string name="search_hint">Enter Github username</string>
+    <string name="no_data">No Data</string>
+
+    <string name="username_template">\@%s</string>
+    <string name="userid_template">#%s</string>
+
+    <string name="detail_userid_template">User ID : #%s</string>
+    <string name="detail_email_template">Email : %s</string>
+    <string name="detail_repo_count_template">Public Repositories : %s</string>
+    <string name="detail_followers_count_template">Followers : %s</string>
+    <string name="detail_following_count_template">Followings : %s</string>
+</resources>

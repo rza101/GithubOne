@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="horizontal_margin">16dp</dimen>
+    <dimen name="user_follow_fragment_height">400dp</dimen>
+</resources>
