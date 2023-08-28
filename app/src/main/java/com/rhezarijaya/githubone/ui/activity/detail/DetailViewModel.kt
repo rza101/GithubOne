@@ -4,22 +4,19 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.rhezarijaya.githubone.data.UserRepository
 import com.rhezarijaya.githubone.data.network.response.UserDetailResponse
 import com.rhezarijaya.githubone.data.network.retrofit.APIConfig
+import com.rhezarijaya.githubone.data.room.entity.Favorite
 import com.rhezarijaya.githubone.utils.SingleEvent
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailViewModel : ViewModel() {
-    companion object {
-        private const val TAG = "DetailViewModel"
-    }
-
+class DetailViewModel(private val userRepository: UserRepository) : ViewModel() {
     private val apiConfig = APIConfig.getGithubAPIService()
-
-    private val _userDetail = MutableLiveData<UserDetailResponse?>()
-    val userDetail: LiveData<UserDetailResponse?> = _userDetail
 
     private val _userFollowers = MutableLiveData<List<UserDetailResponse>?>()
     val userFollowers: LiveData<List<UserDetailResponse>?> = _userFollowers
@@ -27,17 +24,11 @@ class DetailViewModel : ViewModel() {
     private val _userFollowing = MutableLiveData<List<UserDetailResponse>?>()
     val userFollowing: LiveData<List<UserDetailResponse>?> = _userFollowing
 
-    private val _isUserDetailLoading = MutableLiveData<Boolean>()
-    val isUserDetailLoading = _isUserDetailLoading
-
     private val _isUserFollowersLoading = MutableLiveData<Boolean>()
     val isUserFollowersLoading = _isUserFollowersLoading
 
     private val _isUserFollowingLoading = MutableLiveData<Boolean>()
     val isUserFollowingLoading = _isUserFollowingLoading
-
-    private val _userDetailErrorMessage = MutableLiveData<SingleEvent<String>>()
-    val userDetailErrorMessage = _userDetailErrorMessage
 
     private val _userFollowersErrorMessage = MutableLiveData<SingleEvent<String>>()
     val userFollowersErrorMessage = _userFollowersErrorMessage
@@ -45,31 +36,14 @@ class DetailViewModel : ViewModel() {
     private val _userFollowingErrorMessage = MutableLiveData<SingleEvent<String>>()
     val userFollowingErrorMessage = _userFollowingErrorMessage
 
-    fun loadUserDetail(username: String) {
-        _isUserDetailLoading.value = true
+    fun getUserDetail(username: String) = userRepository.getUserDetail(username)
 
-        apiConfig.getUserDetail(username).enqueue(object : Callback<UserDetailResponse> {
-            override fun onResponse(
-                call: Call<UserDetailResponse>,
-                response: Response<UserDetailResponse>
-            ) {
-                _isUserDetailLoading.value = false
+    fun setFavorite(favorite: Favorite) = viewModelScope.launch {
+        userRepository.setFavorite(favorite)
+    }
 
-                if (response.isSuccessful) {
-                    _userDetail.value = response.body()
-                } else {
-                    _userDetailErrorMessage.value =
-                        SingleEvent("Fetching user detail failed. Please try again (${response.message()})")
-                }
-            }
-
-            override fun onFailure(call: Call<UserDetailResponse>, t: Throwable) {
-                isUserDetailLoading.value = false
-                _userDetailErrorMessage.value =
-                    SingleEvent("Fetching user detail failed. Please try again")
-                Log.d(TAG, "onFailure: ${t.localizedMessage}")
-            }
-        })
+    fun removeFavorite(favorite: Favorite) = viewModelScope.launch {
+        userRepository.removeFavorite(favorite)
     }
 
     fun loadUserFollowers(username: String) {
@@ -124,5 +98,9 @@ class DetailViewModel : ViewModel() {
                 Log.d(TAG, "onFailure: ${t.localizedMessage}")
             }
         })
+    }
+
+    companion object {
+        private const val TAG = "DetailViewModel"
     }
 }

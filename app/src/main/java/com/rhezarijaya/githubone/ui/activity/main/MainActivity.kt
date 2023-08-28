@@ -7,9 +7,12 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
+import com.rhezarijaya.githubone.R
 import com.rhezarijaya.githubone.data.network.response.UserDetailResponse
 import com.rhezarijaya.githubone.databinding.ActivityMainBinding
 import com.rhezarijaya.githubone.ui.activity.detail.DetailActivity
+import com.rhezarijaya.githubone.ui.activity.favorite.FavoriteActivity
+import com.rhezarijaya.githubone.ui.activity.settings.SettingsActivity
 import com.rhezarijaya.githubone.ui.adapter.UserDetailListAdapter
 
 class MainActivity : AppCompatActivity() {
@@ -35,6 +38,22 @@ class MainActivity : AppCompatActivity() {
             rvUser.layoutManager = LinearLayoutManager(this@MainActivity)
 
             searchView.setupWithSearchBar(searchBar)
+
+            searchBar.inflateMenu(R.menu.menu_main)
+            searchBar.setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.menu_setting -> {
+                        startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
+                    }
+
+                    R.id.menu_favorite -> {
+                        startActivity(Intent(this@MainActivity, FavoriteActivity::class.java))
+                    }
+                }
+
+                true
+            }
+
             searchView.editText.setOnEditorActionListener { _, _, _ ->
                 val query = searchView.text.toString()
 

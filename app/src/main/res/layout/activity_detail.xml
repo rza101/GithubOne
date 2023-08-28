@@ -1,116 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:overScrollMode="never"
     tools:context=".ui.activity.detail.DetailActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civ_avatar"
-            android:layout_width="175dp"
-            android:layout_height="175dp"
-            android:layout_margin="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@mipmap/ic_launcher_round" />
-
-        <TextView
-            android:id="@+id/tv_fullname"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="8dp"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/civ_avatar"
-            tools:text="Full Name" />
-
-        <TextView
-            android:id="@+id/tv_username"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
-            app:layout_constraintEnd_toEndOf="@id/tv_fullname"
-            app:layout_constraintStart_toStartOf="@id/tv_fullname"
-            app:layout_constraintTop_toBottomOf="@id/tv_fullname"
-            tools:text="\@username" />
-
-        <TextView
-            android:id="@+id/tv_userid"
-            style="@style/TextStyle.UserDetailDescription"
-            android:layout_marginTop="12dp"
-            app:layout_constraintEnd_toEndOf="@id/tv_fullname"
-            app:layout_constraintStart_toStartOf="@id/tv_fullname"
-            app:layout_constraintTop_toBottomOf="@id/tv_username"
-            tools:text="User ID : #123456" />
-
-        <TextView
-            android:id="@+id/tv_email"
-            style="@style/TextStyle.UserDetailDescription"
-            app:layout_constraintEnd_toEndOf="@id/tv_fullname"
-            app:layout_constraintStart_toStartOf="@id/tv_fullname"
-            app:layout_constraintTop_toBottomOf="@id/tv_userid"
-            tools:text="Email : example@domain.com" />
-
-        <TextView
-            android:id="@+id/tv_repo_count"
-            style="@style/TextStyle.UserDetailDescription"
-            app:layout_constraintEnd_toEndOf="@id/tv_fullname"
-            app:layout_constraintStart_toStartOf="@id/tv_fullname"
-            app:layout_constraintTop_toBottomOf="@id/tv_email"
-            tools:text="Public Repositories : 100" />
-
-        <TextView
-            android:id="@+id/tv_followers"
-            style="@style/TextStyle.UserDetailDescription"
-            app:layout_constraintEnd_toEndOf="@id/tv_fullname"
-            app:layout_constraintStart_toStartOf="@id/tv_fullname"
-            app:layout_constraintTop_toBottomOf="@id/tv_repo_count"
-            tools:text="Followers : 100" />
-
-        <TextView
-            android:id="@+id/tv_following"
-            style="@style/TextStyle.UserDetailDescription"
-            app:layout_constraintEnd_toEndOf="@id/tv_fullname"
-            app:layout_constraintStart_toStartOf="@id/tv_fullname"
-            app:layout_constraintTop_toBottomOf="@id/tv_followers"
-            tools:text="Followings : 100" />
-
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/tv_following"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_following" />
+            android:layout_height="wrap_content">
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/view_pager"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/user_follow_fragment_height"
-            android:paddingVertical="8dp"
-            app:layout_constraintTop_toBottomOf="@id/tab_layout" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_avatar"
+                android:layout_width="175dp"
+                android:layout_height="175dp"
+                android:layout_margin="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@mipmap/ic_launcher_round" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tv_fullname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/civ_avatar"
+                tools:text="Full Name" />
 
-</androidx.core.widget.NestedScrollView>
+            <TextView
+                android:id="@+id/tv_username"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+                app:layout_constraintEnd_toEndOf="@id/tv_fullname"
+                app:layout_constraintStart_toStartOf="@id/tv_fullname"
+                app:layout_constraintTop_toBottomOf="@id/tv_fullname"
+                tools:text="\@username" />
+
+            <TextView
+                android:id="@+id/tv_userid"
+                style="@style/TextStyle.UserDetailDescription"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toEndOf="@id/tv_fullname"
+                app:layout_constraintStart_toStartOf="@id/tv_fullname"
+                app:layout_constraintTop_toBottomOf="@id/tv_username"
+                tools:text="User ID : #123456" />
+
+            <TextView
+                android:id="@+id/tv_email"
+                style="@style/TextStyle.UserDetailDescription"
+                app:layout_constraintEnd_toEndOf="@id/tv_fullname"
+                app:layout_constraintStart_toStartOf="@id/tv_fullname"
+                app:layout_constraintTop_toBottomOf="@id/tv_userid"
+                tools:text="Email : example@domain.com" />
+
+            <TextView
+                android:id="@+id/tv_repo_count"
+                style="@style/TextStyle.UserDetailDescription"
+                app:layout_constraintEnd_toEndOf="@id/tv_fullname"
+                app:layout_constraintStart_toStartOf="@id/tv_fullname"
+                app:layout_constraintTop_toBottomOf="@id/tv_email"
+                tools:text="Public Repositories : 100" />
+
+            <TextView
+                android:id="@+id/tv_followers"
+                style="@style/TextStyle.UserDetailDescription"
+                app:layout_constraintEnd_toEndOf="@id/tv_fullname"
+                app:layout_constraintStart_toStartOf="@id/tv_fullname"
+                app:layout_constraintTop_toBottomOf="@id/tv_repo_count"
+                tools:text="Followers : 100" />
+
+            <TextView
+                android:id="@+id/tv_following"
+                style="@style/TextStyle.UserDetailDescription"
+                app:layout_constraintEnd_toEndOf="@id/tv_fullname"
+                app:layout_constraintStart_toStartOf="@id/tv_fullname"
+                app:layout_constraintTop_toBottomOf="@id/tv_followers"
+                tools:text="Followings : 100" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/tv_following"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_following" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/user_follow_fragment_height"
+                android:paddingVertical="8dp"
+                app:layout_constraintTop_toBottomOf="@id/tab_layout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <ImageButton
+        android:id="@+id/ib_back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:contentDescription="@string/back"
+        android:src="@drawable/baseline_arrow_back_24" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="20dp"
+        android:contentDescription="@string/favorite"
+        android:src="@drawable/baseline_favorite_border_24"
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

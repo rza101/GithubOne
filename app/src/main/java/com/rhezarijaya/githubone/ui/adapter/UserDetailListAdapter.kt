@@ -12,20 +12,6 @@ import com.rhezarijaya.githubone.databinding.ItemUserBinding
 
 class UserDetailListAdapter(private val onCLickCallback: (UserDetailResponse) -> Unit) :
     ListAdapter<UserDetailResponse, UserDetailListAdapter.ViewHolder>(DIFF_UTIL) {
-    companion object {
-        val DIFF_UTIL = object : DiffUtil.ItemCallback<UserDetailResponse>() {
-            override fun areItemsTheSame(
-                oldItem: UserDetailResponse,
-                newItem: UserDetailResponse
-            ): Boolean = oldItem.id == newItem.id
-
-            override fun areContentsTheSame(
-                oldItem: UserDetailResponse,
-                newItem: UserDetailResponse
-            ): Boolean = oldItem == newItem
-        }
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
@@ -53,4 +39,18 @@ class UserDetailListAdapter(private val onCLickCallback: (UserDetailResponse) ->
     }
 
     class ViewHolder(val binding: ItemUserBinding) : RecyclerView.ViewHolder(binding.root)
+
+    companion object {
+        val DIFF_UTIL = object : DiffUtil.ItemCallback<UserDetailResponse>() {
+            override fun areItemsTheSame(
+                oldItem: UserDetailResponse,
+                newItem: UserDetailResponse
+            ): Boolean = oldItem.id == newItem.id
+
+            override fun areContentsTheSame(
+                oldItem: UserDetailResponse,
+                newItem: UserDetailResponse
+            ): Boolean = oldItem == newItem
+        }
+    }
 }

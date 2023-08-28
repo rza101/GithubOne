@@ -12,10 +12,6 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainViewModel : ViewModel() {
-    companion object {
-        private const val TAG = "MainViewModel"
-    }
-
     private val _searchResult = MutableLiveData<SearchResponse?>()
     val searchResult: LiveData<SearchResponse?> = _searchResult
 
@@ -54,5 +50,9 @@ class MainViewModel : ViewModel() {
                     Log.d(TAG, "onFailure: ${t.localizedMessage}")
                 }
             })
+    }
+
+    companion object {
+        private const val TAG = "MainViewModel"
     }
 }

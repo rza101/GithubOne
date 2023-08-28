@@ -1,7 +1,12 @@
 <resources>
     <string name="app_name">GithubOne</string>
-    <string name="search_hint">Enter Github username</string>
+    <string name="back">Back</string>
+    <string name="favorite">Favorite</string>
     <string name="no_data">No Data</string>
+    <string name="search_hint">Enter Github username</string>
+    <string name="settings">Settings</string>
+
+    <string name="dark_mode">dark_mode</string>
 
     <string name="username_template">\@%s</string>
     <string name="userid_template">#%s</string>

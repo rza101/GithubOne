@@ -16,12 +16,6 @@ import com.rhezarijaya.githubone.ui.activity.detail.DetailViewModel
 import com.rhezarijaya.githubone.ui.adapter.UserDetailListAdapter
 
 class UserFollowFragment : Fragment() {
-    companion object {
-        const val FRAGMENT_TYPE = "FRAGMENT_TYPE"
-        const val TYPE_FOLLOWERS = "TYPE_FOLLOWERS"
-        const val TYPE_FOLLOWING = "TYPE_FOLLOWING"
-    }
-
     private lateinit var binding: FragmentUserFollowBinding
     private lateinit var detailViewModel: DetailViewModel
     private lateinit var userDetailListAdapter: UserDetailListAdapter
@@ -102,5 +96,11 @@ class UserFollowFragment : Fragment() {
                 }
             }
         }
+    }
+
+    companion object {
+        const val FRAGMENT_TYPE = "FRAGMENT_TYPE"
+        const val TYPE_FOLLOWERS = "TYPE_FOLLOWERS"
+        const val TYPE_FOLLOWING = "TYPE_FOLLOWING"
     }
 }

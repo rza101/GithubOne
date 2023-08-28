@@ -12,7 +12,7 @@ interface GithubAPIService {
     fun getUsersByUsername(@Query("q") username: String): Call<SearchResponse>
 
     @GET("users/{username}")
-    fun getUserDetail(@Path("username") username: String): Call<UserDetailResponse>
+    suspend fun getUserDetail(@Path("username") username: String): UserDetailResponse
 
     @GET("users/{username}/followers")
     fun getUserFollowers(@Path("username") username: String): Call<List<UserDetailResponse>>
