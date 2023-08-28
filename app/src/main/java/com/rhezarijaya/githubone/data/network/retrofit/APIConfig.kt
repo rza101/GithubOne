@@ -7,6 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object APIConfig {
+    // TODO use buildconfig or local.properties
     private const val GITHUB_API_BASE_URL = "https://api.github.com"
     private const val GITHUB_PAT =
         "token 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"
@@ -20,6 +21,8 @@ object APIConfig {
                     .build()
             )
         }
+
+        // TODO debug to none
         val httpLoggingInterceptor =
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
